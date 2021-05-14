@@ -11,8 +11,17 @@
     integrity="sha384-p34f1UUtsS3wqzfto5wAAmdvj+osOnFyQFpp4Ua3gs/ZVWx6oOypYoCJhGGScy+8"
     crossorigin="anonymous"></script>
   <title>WakaMaths</title>
-  <script src="./main.js" defer></script>
+  <script src="./buzz.js" defer></script>
   <style>
+    body {
+      background-color: #5486c0;
+      font-family: var('--bs-font-sans-serif');
+    }
+
+    .menu {
+      text-align: center;
+    }
+
     .progress-bar {
       -webkit-transition: none;
       -moz-transition: none;
@@ -26,10 +35,34 @@
 <body>
   <div class="container">
     <br>
-    <div class="progress" id="progress-element" style="visibility: hidden;">
-      <div class="progress-bar" id="timer" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0"
-        aria-valuemax="100"></div>
+
+    <div class="menu" id="menu" style="display: block;">
+      <h1>WakaMaths Question Buzz</h1>
+      <h4>Let's practice math together!</h4>
+      <br>
+      <div class="form-floating">
+        <input type="number" class="form-control" id="answer-time" aria-describedby="answer-time"
+          oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+        <label for="answer-time">Time to answer</label>
+      </div>
+      <br>
+      <div class="form-floating">
+        <input type="number" class="form-control" id="question-amount" aria-describedby="question-amount"
+          oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+        <label for="question-amount">Question amount</label>
+      </div>
+      <br>
+      <button type="button" class="btn btn-danger btn-lg" onclick="javascript:startQuickMathsWithCorrectInputs()">Let's go!</button>
     </div>
+    <div class="game" style="display: none;" id="game">
+      <h1>Hi</h1>
+      <div class="progress" id="progress-element">
+        <div class="progress-bar bg-danger" id="timer" role="progressbar" style="width: 100%" aria-valuenow="100"
+          aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+
+
   </div>
 </body>
 
